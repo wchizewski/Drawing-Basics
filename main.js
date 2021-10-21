@@ -6,6 +6,9 @@ let ctx = cnv.getContext("2d");
 cnv.width = 800;
 cnv.height = 600;
 
+// Store images in variables
+let htmlLogoImg = document.getElementById("frogimg")
+
 // let's draw some stuff using the graphics context (ctx)
 
 // DRAW RECTANGLES
@@ -34,9 +37,11 @@ ctx.strokeText ("Hello Canvas!", 350, 100);
 ctx.lineWidth = 4;
 ctx.strokeStyle = "orange";
 ctx.beginPath()
+// set drawing location
 ctx.moveTo(500, 200);
-ctx.lineTo(700, 150)
-ctx.lineTo(600, 100)
+// draw a line from current location to (700, 150)
+ctx.lineTo(700, 150);
+ctx.lineTo(600, 100);
 // Draw the specified path
 ctx.stroke(); 
 
@@ -54,11 +59,24 @@ ctx.fill();
 ctx.lineWidth = 5;
 ctx.strokeStyle= "#0000FF";
 ctx.beginPath();
+// circle (0 to 2*PI) with a center of (100, 500) and radius of 50
 ctx.arc(100, 500, 50, 0, 2 * Math.PI);
 ctx.stroke();
 
-ctx.lineWidth = 2;
-ctx.strokeStyle= "#FFFF00";
+ctx.fillStyle= "green";
 ctx.beginPath();
-ctx.arc(200, 500, 20, 0, 2 * Math.PI);
+// circle (0 to 2*PI) with center (250, 500) and radius 30
+ctx.arc(200, 500, 30, 0, 2 * Math.PI);
 ctx.fill();
+
+ctx.fillStyle= "#FFFF00";
+ctx.beginPath();
+// half circle (0 to PI) with center (250, 500) and radius 20
+ctx.arc(200, 500, 20, 0, Math.PI);
+ctx.fill();
+
+// DRAW IMAGES
+// draw image with top left corner of (200, 200)
+ctx.drawImage(htmlLogoImg, 200, 200)
+// draw image with top left corner of (200, 350) scale to 50 x 50
+ctx.drawImage(htmlLogoImg, 200, 350, 50, 50)
